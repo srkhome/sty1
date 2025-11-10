@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>免費報名｜AI 影片生成研討會</title>
+<link rel="stylesheet" href="assets/styles.css">
+<script defer src="assets/script.js"></script>
+</head>
+<body>
+<header class="header">
+  <div class="wrap">
+    <h1>填寫資料，立即觀看研討會</h1>
+    <p class="lead">只需姓名與信箱，完成即自動開啟影片頁面。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+    <div class="card">
+      <form id="signupForm">
+        <label>姓名</label>
+        <input type="text" id="name" required>
+        <label>信箱</label>
+        <input type="email" id="email" required>
+        <label class="small"><input type="checkbox" id="agree" required> 我同意接收研討會資訊與後續教學（可隨時取消）</label>
+        <br><br>
+        <button type="submit">送出並觀看研討會</button>
+      </form>
+      <p class="small">P2 參考頁：<a href="https://wondrous-artisan-4295.kit.com/2eaa3af50c" target="_blank" rel="noopener">kit.com</a></p>
+    </div>
+    <div class="card">
+      <img class="resp" src="assets/images/teacher.jpg" alt="講師與課程">
+      <p>講師：陳日新（故事行銷）</p>
+    </div>
+  </div>
+  <div class="notice small">
+    🔒 我們重視您的隱私，資料僅用於提供研討會連結與最新教學資訊。
+  </div>
+</main>
+
+<script>
+document.getElementById('signupForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const agree = document.getElementById('agree').checked;
+  if(!agree){ alert('請勾選同意條款'); return; }
+  await saveSignup({name, email});
+  const params = new URLSearchParams({name, email});
+  window.location.href = 'thankyou.html?' + params.toString();
+});
+</script>
+
+<footer>© AI 影片生成研討會</footer>
+</body>
+</html>

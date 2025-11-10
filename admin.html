@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>資料後台登入</title>
+<link rel="stylesheet" href="assets/styles.css">
+<script defer src="assets/script.js"></script>
+</head>
+<body>
+<header class="header">
+  <div class="wrap">
+    <h1>資料後台</h1>
+    <p class="lead">請輸入管理者帳號與密碼</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="card" id="loginBox">
+    <label>帳號（Email）</label>
+    <input type="email" id="acc" placeholder="ueue31@gmail.com" required>
+    <label>密碼</label>
+    <input type="password" id="pwd" placeholder="********" required>
+    <button id="loginBtn">登入</button>
+    <p class="small">預設帳號：ueue31@gmail.com　密碼：12345678（可於 assets/script.js 修改）</p>
+  </div>
+
+  <div class="card" id="dataBox" style="display:none">
+    <h2>報名名單</h2>
+    <p><button id="csvBtn">下載CSV</button> <span class="small">（僅收錄此站蒐集的資料，部署於 GitHub Pages 為前端示範用）</span></p>
+    <table class="table" id="tbl">
+      <thead><tr><th>姓名</th><th>信箱</th><th>填寫時間</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</main>
+
+<script>
+document.getElementById('loginBtn').addEventListener('click', ()=>{
+  const a = document.getElementById('acc').value.trim();
+  const p = document.getElementById('pwd').value.trim();
+  if(a===CONFIG.adminEmail && p===CONFIG.adminPass){
+    document.getElementById('loginBox').style.display='none';
+    document.getElementById('dataBox').style.display='block';
+    const rows = getSignups();
+    const tbody = document.querySelector('#tbl tbody');
+    tbody.innerHTML = rows.map(r => `<tr><td>${r.name||''}</td><td>${r.email||''}</td><td>${new Date(r.ts).toLocaleString()}</td></tr>`).join('');
+    document.getElementById('csvBtn').addEventListener('click', ()=>downloadCSV(rows));
+  }else{
+    alert('帳號或密碼錯誤');
+  }
+});
+</script>
+
+<footer>© AI 影片生成研討會</footer>
+</body>
+</html>

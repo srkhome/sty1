@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>研討會影片｜AI 影片生成</title>
+<link rel="stylesheet" href="assets/styles.css">
+<script defer src="assets/script.js"></script>
+</head>
+<body>
+<div class="top-right"><a href="admin.html" title="資料後台（需登入）">資料後台連結</a></div>
+<header class="header">
+  <div class="wrap">
+    <h1>歡迎加入！立即觀看研討會</h1>
+    <p class="lead" id="hello"></p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="card">
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:16px;">
+      <iframe width="560" height="315" 
+        src="https://www.youtube.com/embed/427dVhttznA?si=M96ChB_G-y4aQwzQ" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+        style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+    </div>
+    <p class="small">P3 來源：<a href="https://wuyuanweb.com/cartflows_step/landing-page-4/" target="_blank" rel="noopener">landing-page-4</a></p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>下一步：取得完整教材</h2>
+      <p>加入課程可獲得腳本模板、BGM 授權清單、分鏡清單、平台發佈 SOP 等資源。</p>
+      <a class="btn" href="form.html">分享給朋友一起學</a>
+    </div>
+    <div class="card">
+      <h2>講師：陳日新老師</h2>
+      <p>遠見雜誌報導、講座超過 200 家企業，主題：故事行銷 × 影音變現。</p>
+    </div>
+  </div>
+</main>
+
+<script>
+const usp = new URLSearchParams(location.search);
+const name = usp.get('name') || '';
+document.getElementById('hello').textContent = name ? (name + '，這支影片是為你準備的。') : '以下影片內容請享用！';
+</script>
+
+<footer>© AI 影片生成研討會</footer>
+</body>
+</html>
