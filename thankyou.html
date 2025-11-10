@@ -13,6 +13,7 @@
   <div class="wrap">
     <h1>歡迎加入！立即觀看研討會</h1>
     <p class="lead" id="hello"></p>
+    <p class="notice">恭喜！你離 <b>30 分鐘做出第一支 AI 影片</b> 只差一步，完成下方加入即可取得教材。</p>
   </div>
 </header>
 
@@ -26,13 +27,22 @@
         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
         style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
     </div>
-    <p class="small">P3 來源：<a href="https://wuyuanweb.com/cartflows_step/landing-page-4/" target="_blank" rel="noopener">landing-page-4</a></p>
+  </div>
+
+  <div class="card" style="text-align:center;">
+    <h2>📱 加入 LINE 報名群｜立即領取 AI 實戰資源</h2>
+    <p>掃描下方 QR Code 或直接點按按鈕加入，我們會把「教學影片／操作講義／三款 App 清單／主播名片示例」送到你。</p>
+    <img src="assets/images/line-qr.jpg" alt="加入LINE群組" class="resp" style="max-width:300px;margin:auto;">
+    <p style="margin-top:12px;">
+      <a class="btn" id="lineBtn" href="https://line.me/ti/p/40LmfznrLG" target="_blank" rel="noopener">👉 點我加入 LINE 群</a>
+    </p>
+    <p class="small">若按鈕無法開啟，請直接用手機掃描上方 QR Code。</p>
   </div>
 
   <div class="grid">
     <div class="card">
       <h2>下一步：取得完整教材</h2>
-      <p>加入課程可獲得腳本模板、BGM 授權清單、分鏡清單、平台發佈 SOP 等資源。</p>
+      <p>加入可獲得腳本模板、BGM 授權清單、分鏡清單、平台發佈 SOP 等資源。</p>
       <a class="btn" href="form.html">分享給朋友一起學</a>
     </div>
     <div class="card">
@@ -46,6 +56,11 @@
 const usp = new URLSearchParams(location.search);
 const name = usp.get('name') || '';
 document.getElementById('hello').textContent = name ? (name + '，這支影片是為你準備的。') : '以下影片內容請享用！';
+//設定 LINE 連結：請到 assets/script.js 的 CONFIG.lineUrl 放上實際連結
+try{
+  const b = document.getElementById('lineBtn');
+  if(b && CONFIG.lineUrl && CONFIG.lineUrl !== '#'){ b.href = CONFIG.lineUrl; }
+}catch(e){}
 </script>
 
 <footer>© AI 影片生成研討會</footer>
